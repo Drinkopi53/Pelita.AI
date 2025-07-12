@@ -23,7 +23,7 @@ function App() {
     id: 'init',
     sender: 'logos',
     type: 'text',
-    content: 'Salam! Saya LOGOS, asisten studi Alkitab Anda.\n\nAnda bisa mengajukan pertanyaan umum, atau coba fitur khusus kami dengan mengetik:\n• **"jelajahi [kitab pasal:ayat]"** untuk analisis mendalam (contoh: *jelajahi Yohanes 3:16*)\n• **"profil [tokoh]"** untuk riwayat tokoh Alkitab.'
+    content: 'Salam! Saya LOGOS, asisten studi Alkitab Anda.\n\nAnda bisa mengajukan pertanyaan umum, atau coba fitur khusus kami dengan mengetik:\n\n• "Jelajahi [kitab pasal:ayat]" untuk analisis mendalam (contoh: Jelajahi Yohanes 3:16)\n\n• "Profil [tokoh]" untuk riwayat tokoh Alkitab.'
   };
   const [messages, setMessages] = useLocalStorage<Message[]>('pelita-ai-messages', [initialMessage]);
   const [isLoading, setIsLoading] = useState(false);
