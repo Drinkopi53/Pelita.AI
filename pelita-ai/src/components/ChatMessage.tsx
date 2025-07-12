@@ -1,6 +1,7 @@
 import React from 'react';
 import { User, Bot, AlertTriangle } from 'lucide-react';
 import { Card } from './ui/Card';
+import ReactMarkdown from 'react-markdown';
 import type { Message as MessageType } from '../App'; // Import tipe dari App
 
 // Komponen ini sekarang menerima subset dari tipe Message utama
@@ -45,7 +46,9 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
         </div>
       )}
       <Card className={`max-w-3xl ${cardBgColor} ${cardTextColor}`}>
-        <p className="whitespace-pre-wrap">{content}</p>
+        <div className="prose max-w-none">
+            <ReactMarkdown>{content}</ReactMarkdown>
+        </div>
       </Card>
        {isUser && (
         <div className={`flex-shrink-0 w-10 h-10 rounded-full ${iconBgColor} flex items-center justify-center text-white`}>
