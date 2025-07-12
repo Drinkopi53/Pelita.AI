@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Header } from './components/layout/Header';
-import { ChatMessage, Message } from './components/ChatMessage';
+import { ChatMessage, type Message } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
 import { Bot } from 'lucide-react';
 import { useLocalStorage } from './hooks/useLocalStorage';
