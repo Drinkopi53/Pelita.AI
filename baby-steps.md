@@ -13,16 +13,16 @@ Tujuan: Menyiapkan semua aset dan kredensial yang diperlukan sebelum eksekusi ol
 * \[x\] **Tugas 2: Siapkan Repositori Git (Opsional, Direkomendasikan).**  
   * Buat repositori baru di GitHub dengan nama pelita-ai.
 
-### **Fase 1: Inisialisasi Proyek & Struktur Dasar (Eksekusi oleh AI)**
+### **Fase 1: Inisialisasi Proyek & Struktur Dasar**
 
 Tujuan: Membuat proyek React dengan TypeScript, menginstal semua dependensi, dan membangun struktur file serta komponen UI dasar.
 
-* **Langkah 1: Inisialisasi Proyek Vite \+ React \+ TypeScript.**  
+* **Langkah 1: Inisialisasi Proyek Vite \+ React \+ TypeScript. (Eksekusi oleh Manusia)**  
   * Jalankan perintah berikut di terminal:  
     npm create vite@latest pelita-ai \-- \--template react-ts  
     cd pelita-ai
 
-* **Langkah 2: Instalasi dan Konfigurasi Tailwind CSS v3.4.1.**  
+* **Langkah 2: Instalasi dan Konfigurasi Tailwind CSS v3.4.1. (Eksekusi oleh Manusia)**  
   * Jalankan perintah instalasi:  
     npm install \-D tailwindcss@3.4.1 postcss autoprefixer  
     npx tailwindcss init \-p
@@ -45,16 +45,16 @@ Tujuan: Membuat proyek React dengan TypeScript, menginstal semua dependensi, dan
     @tailwind components;  
     @tailwind utilities;
 
-* **Langkah 3: Instalasi Dependensi Tambahan.**  
+* **Langkah 3: Instalasi Dependensi Tambahan. (Eksekusi oleh Manusia)**  
   * Jalankan perintah berikut untuk menginstal pustaka peta dan ikon:  
     npm install react-leaflet leaflet lucide-react  
     npm install \-D @types/leaflet
 
-* **Langkah 4: Buat Struktur Direktori Proyek.**  
+* **Langkah 4: Buat Struktur Direktori Proyek. (Eksekusi oleh Manusia)**  
   * Jalankan perintah berikut dari direktori root proyek (pelita-ai):  
     mkdir \-p src/components/ui src/components/layout src/hooks src/services src/assets
 
-* **Langkah 5: Buat Komponen UI Dasar.**  
+* **Langkah 5: Buat Komponen UI Dasar. (Eksekusi oleh AI)**  
   * **Buat file src/components/ui/Card.tsx:**  
     import React from 'react';
 
@@ -93,7 +93,7 @@ Tujuan: Membuat proyek React dengan TypeScript, menginstal semua dependensi, dan
       );  
     };
 
-* **Langkah 6: Buat Komponen Layout dan Antarmuka Chat.**  
+* **Langkah 6: Buat Komponen Layout dan Antarmuka Chat. (Eksekusi oleh AI)**  
   * **Buat file src/components/layout/Header.tsx:**  
     import React from 'react';
 
@@ -185,7 +185,7 @@ Tujuan: Membuat proyek React dengan TypeScript, menginstal semua dependensi, dan
       );  
     };
 
-* **Langkah 7: Susun Aplikasi Utama.**  
+* **Langkah 7: Susun Aplikasi Utama. (Eksekusi oleh AI)**  
   * **Ganti isi file src/App.tsx** dengan kode berikut untuk menyusun semua komponen:  
     import React, { useState, useRef, useEffect } from 'react';  
     import { Header } from './components/layout/Header';  
@@ -251,7 +251,7 @@ Tujuan: Membuat proyek React dengan TypeScript, menginstal semua dependensi, dan
 
     export default App;
 
-* **Langkah 8: Verifikasi Fase 1\.**  
+* **Langkah 8: Verifikasi Fase 1\. (Eksekusi oleh AI)**  
   * Jalankan npm run dev di terminal.  
   * Buka browser di http://localhost:5173.  
   * **Hasil yang Diharapkan:** Aplikasi chat harus tampil dengan pesan selamat datang. Anda bisa mengetik pesan, mengirimkannya, dan melihat respons placeholder setelah jeda singkat.
