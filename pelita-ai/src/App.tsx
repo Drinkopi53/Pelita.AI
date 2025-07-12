@@ -5,7 +5,7 @@ import { ChatInput } from './components/ChatInput';
 import { Bot } from 'lucide-react';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { askLogosJson, askLogosText, PERICOPE_PROMPT } from './services/geminiService';
-import { PericopeExplorer, PericopeData } from './features/PericopeExplorer';
+import { PericopeExplorer, type PericopeData } from './features/PericopeExplorer';
 import { AboutModal } from './features/AboutModal';
 
 // Definisikan tipe Message yang lebih fleksibel
