@@ -7,9 +7,8 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { askLogos } from './services/geminiService';
 
 function App() {
-  const [messages, setMessages] = useLocalStorage<Message[]>('pelita-ai-messages', [
-    { sender: 'logos', text: 'Salam! Saya LOGOS, asisten studi Alkitab Anda. Apa yang ingin Anda pelajari hari ini?' }
-  ]);
+  const initialMessage: Message = { sender: 'logos', text: 'Salam! Saya LOGOS, asisten studi Alkitab Anda. Apa yang ingin Anda pelajari hari ini?' };
+  const [messages, setMessages] = useLocalStorage<Message[]>('pelita-ai-messages', [initialMessage]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -31,9 +30,13 @@ function App() {
     setIsLoading(false);
   };
 
+  const handleClearChat = () => {
+    setMessages([initialMessage]);
+  };
+
   return (
     <div className="flex flex-col h-screen bg-gray-100 font-sans">
-      <Header />
+      <Header onClearChat={handleClearChat} />
       <main className="flex-1 overflow-y-auto p-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {messages.map((msg, index) => (
