@@ -3,9 +3,11 @@ import { Header } from './components/layout/Header';
 import { ChatMessage, Message } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
 import { Bot } from 'lucide-react';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { askLogos } from './services/geminiService';
 
 function App() {
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useLocalStorage<Message[]>('pelita-ai-messages', [
     { sender: 'logos', text: 'Salam! Saya LOGOS, asisten studi Alkitab Anda. Apa yang ingin Anda pelajari hari ini?' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,17 +19,16 @@ function App() {
 
   useEffect(scrollToBottom, [messages]);
 
-  const handleSend = (text: string) => {
+  const handleSend = async (text: string) => {
     const userMessage: Message = { sender: 'user', text };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
-    // Placeholder for AI response
-    setTimeout(() => {
-      const logosResponse: Message = { sender: 'logos', text: `Anda bertanya: "${text}". Fungsi AI belum terhubung.` };
-      setMessages(prev => [...prev, logosResponse]);
-      setIsLoading(false);
-    }, 1500);
+    const logosResponseText = await askLogos(text);
+    const logosResponse: Message = { sender: 'logos', text: logosResponseText };
+
+    setMessages(prev => [...prev, logosResponse]);
+    setIsLoading(false);
   };
 
   return (
