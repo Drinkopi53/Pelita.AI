@@ -2,7 +2,6 @@ import React from 'react';
 import { User, Bot, AlertTriangle } from 'lucide-react';
 import { Card } from './ui/Card';
 import ReactMarkdown from 'react-markdown';
-import type { Message as MessageType } from '../App'; // Import tipe dari App
 
 // Komponen ini sekarang menerima subset dari tipe Message utama
 interface ChatMessageProps {

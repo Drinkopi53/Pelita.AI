@@ -4,8 +4,9 @@ import { ChatMessage } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
 import { Bot } from 'lucide-react';
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { askLogosJson, askLogosText, PERICOPE_PROMPT } from './services/geminiService';
+import { askLogosJson, askLogosText, PERICOPE_PROMPT, PROFILE_PROMPT } from './services/geminiService';
 import { PericopeExplorer, type PericopeData } from './features/PericopeExplorer';
+import { CharacterProfileCard, type ProfileData } from './features/CharacterProfileCard';
 import { AboutModal } from './features/AboutModal';
 
 // Definisikan tipe Message yang lebih fleksibel
@@ -13,7 +14,7 @@ export type Message = {
   id: string;
   sender: 'user' | 'logos';
   type: 'text' | 'pericope' | 'profile' | 'error';
-  content: string | PericopeData; // Bisa berupa teks atau objek data
+  content: string | PericopeData | ProfileData; // Bisa berupa teks atau objek data
 };
 
 
@@ -55,8 +56,10 @@ function App() {
         const data = await askLogosJson<PericopeData>(prompt);
         logosResponse = { id: Date.now().toString(), sender: 'logos', type: 'pericope', content: data };
       } else if (profileMatch) {
-        // Logika untuk profil tokoh (placeholder)
-        logosResponse = { id: Date.now().toString(), sender: 'logos', type: 'text', content: "Fitur profil sedang dikembangkan." };
+        const character = profileMatch[1];
+        const prompt = PROFILE_PROMPT(character);
+        const data = await askLogosJson<ProfileData>(prompt);
+        logosResponse = { id: Date.now().toString(), sender: 'logos', type: 'profile', content: data };
       } else {
         const responseText = await askLogosText(text);
         logosResponse = { id: Date.now().toString(), sender: 'logos', type: 'text', content: responseText };
@@ -94,8 +97,7 @@ function App() {
               case 'pericope':
                 return <PericopeExplorer key={msg.id} data={msg.content as PericopeData} />;
               case 'profile':
-                // return <CharacterProfileCard key={msg.id} data={msg.content} />;
-                return <ChatMessage key={msg.id} message={{...msg, content: "Tampilan profil akan ada di sini."}} />;
+                return <CharacterProfileCard key={msg.id} data={msg.content as ProfileData} />;
               case 'error':
                  return <ChatMessage key={msg.id} message={{...msg, content: msg.content as string, isError: true }} />;
               default:
