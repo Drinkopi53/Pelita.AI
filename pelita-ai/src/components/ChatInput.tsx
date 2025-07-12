@@ -30,7 +30,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSend, isLoading }) => {
               handleSubmit(e);
             }
           }}
-          placeholder="Tanyakan sesuatu pada LOGOS..."
+          placeholder="Tanya apa saja atau coba 'jelajahi Yohanes 3:16'"
           className="w-full p-3 pr-16 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
           rows={1}
           disabled={isLoading}

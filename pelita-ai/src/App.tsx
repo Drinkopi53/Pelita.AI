@@ -18,7 +18,12 @@ export type Message = {
 
 
 function App() {
-  const initialMessage: Message = { id: 'init', sender: 'logos', type: 'text', content: 'Salam! Saya LOGOS, asisten studi Alkitab Anda. Apa yang ingin Anda pelajari hari ini?' };
+  const initialMessage: Message = {
+    id: 'init',
+    sender: 'logos',
+    type: 'text',
+    content: 'Salam! Saya LOGOS, asisten studi Alkitab Anda.\n\nAnda bisa mengajukan pertanyaan umum, atau coba fitur khusus kami dengan mengetik:\n• **"jelajahi [kitab pasal:ayat]"** untuk analisis mendalam (contoh: *jelajahi Yohanes 3:16*)\n• **"profil [tokoh]"** untuk riwayat tokoh Alkitab.'
+  };
   const [messages, setMessages] = useLocalStorage<Message[]>('pelita-ai-messages', [initialMessage]);
   const [isLoading, setIsLoading] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
